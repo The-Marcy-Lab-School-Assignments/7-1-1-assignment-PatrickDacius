@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const BotClassIcon = (bot_class) => {
   switch (bot_class) {
     case "Assault":
@@ -18,12 +20,17 @@ const BotClassIcon = (bot_class) => {
 
 const BotCard = ({ bot }) => {
 
-  const handleClick = () => {
-    console.log(`take me to robot ${robot.id}`);
-  }
+  // const handleClick = () => {
+  //   console.log(`take me to robot ${robot.id}`);
+  // }
+
+  const navigate = useNavigate()
+
+  const robotClick = () => navigate(`/robots/${bot.id}`);
+
 
   return (
-    <div className="ui card" onClick={handleClick}>
+    <div className="ui card" onClick={(robotClick)}>
       <div className="image">
         <img alt={bot.name} src={bot.avatar_url} />
       </div>
